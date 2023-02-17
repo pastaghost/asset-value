@@ -49,8 +49,8 @@ const av = new AssetValue({ value: '42', asset: asset, format: AssetValueFormat.
 
 
 
-// Serialized redux-compatible representation (SerializedAssetValue)
-const k = term1.toSerialized() => "{"a":"cosmos:osmosis-1/ibc:118","p":6,"v":"420"}|a35b8ad1"
+// Serialized Redux-compatible representation (SerializedAssetValue)
+const k = av.toSerialized() => "{"a":"cosmos:osmosis-1/ibc:118","p":6,"v":"420"}|a35b8ad1"
 
 
 
