@@ -8,7 +8,7 @@ const amount = bnOrZero(asset0AmountBaseUnit)
 .toFixed(0, BigNumber.ROUND_DOWN)
 
 // Using AssetValue, Example #1
-const amount = asset0Amount.mult(('1' - 'DEFAULT_SLIPPAGE').toBaseUnit()
+const amount = asset0Amount.mult('1' - 'DEFAULT_SLIPPAGE').toBaseUnit()
 
 
 
