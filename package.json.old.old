@@ -1,0 +1,67 @@
+{
+  "name": "lib",
+  "version": "1.1.0",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/**/*"
+    ],
+    "version": "independent"
+  },
+  "scripts": {
+    "local-ci": "yarn clean && yarn && yarn lint && yarn build && yarn type-check && yarn test",
+    "build": "lerna run build --include-dependencies",
+    "clean": "rimraf node_modules dist packages/**/dist packages/**/node_modules packages/**/tsconfig.build.tsbuildinfo packages/unchained-client/src/generated",
+    "dev": "lerna run dev --stream --parallel",
+    "lint": "eslint --cache --max-warnings=0 .",
+    "lint:fix": "yarn lint --fix",
+    "show-linked-packages": "find node_modules node_modules/@* -maxdepth 1 -type l -print",
+    "link-packages": "node scripts/linkPackages.js link",
+    "unlink-packages": "node scripts/linkPackages.js unlink",
+    "clean-link": "yarn clean && yarn && yarn build && yarn link-packages",
+    "test": "jest",
+    "test:dev": "jest --watch",
+    "type-check": "lerna run type-check",
+    "release": "yarn workspaces run semantic-release -e semantic-release-monorepo",
+    "publish:lerna": "lerna publish --yes",
+    "version:patch": "lerna version patch --yes --no-git-tag-version --no-push",
+    "version:minor": "lerna version minor --yes --no-git-tag-version --no-push",
+    "version:major": "lerna version major --yes --no-git-tag-version --no-push",
+    "postinstall": "./scripts/postinstall.sh"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@types/jest": "^27.0.1",
+    "@types/lodash": "^4.14.182",
+    "@types/node": "^14.17.3",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "bs58check": "^2.1.2",
+    "dotenv": "^10.0.0",
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "26.1.1",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "jest": "^27.1.0",
+    "jest-mock-extended": "^1.0.9",
+    "lerna": "^5.5.2",
+    "prettier": "2.5.1",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^17.4.7",
+    "semantic-release-monorepo": "^7.0.5",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^10.2.1",
+    "type-assertions": "^1.1.0",
+    "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0"
+  }
+}
