@@ -3,22 +3,22 @@
 ```typescript
 
 // Old convention, Example #1
-amount: bnOrZero(asset0Amount)
+const amount = bnOrZero(asset0AmountBaseUnit)
 .multipliedBy(bn(1).minus(bnOrZero(DEFAULT_SLIPPAGE)))
 .toFixed(0, BigNumber.ROUND_DOWN)
 
 // Using AssetValue, Example #1
-amount: asset0Amount.mult(('1' - 'DEFAULT_SLIPPAGE').toBaseUnit()
+const amount = asset0Amount.mult(('1' - 'DEFAULT_SLIPPAGE').toBaseUnit()
 
 
 
 // Old convention, Example #2
-const underlyingAsset0AmountPrecision = bnOrZero(asset0Amount)
+const underlyingAsset0AmountPrecision = bnOrZero(asset0AmountBaseUnit)
 .dividedBy(bn(10).pow(lpAsset.precision ?? '0'))
 .toString()
 
 // Using AssetValue, Example #2
-const underlyingAsset0AmountPrecision = asset0Amount.toPrecision()
+const underlyingAsset0Amount = asset0Amount.toPrecision()
 
 
 
@@ -45,7 +45,7 @@ const asset: Asset = {
     explorerAddressLink: 'https://www.mintscan.io/osmosis/account/',
     explorerTxLink: 'https://www.mintscan.io/osmosis/txs/',
 }
-const av1 = new AssetValue({ value: '42', asset: asset, format: AssetValueFormat.BASE_UNIT })
+const av = new AssetValue({ value: '42', asset: asset, format: AssetValueFormat.BASE_UNIT })
 
 
 
